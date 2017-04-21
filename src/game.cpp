@@ -10087,7 +10087,7 @@ bool game::plfire_check( const targeting_data &args ) {
             }
         }
 
-        if( gun->has_flag( "MOUNTED_GUN" ) ) {
+        if( gun->has_flag( "MOUNTED_GUN" ) && u.get_str() < 16) {
             int vpart = -1;
             veh = m.veh_at( u.pos(), vpart );
             bool v_mountable = ( veh && veh->part_with_feature( vpart, "MOUNTABLE" ) >= 0 );

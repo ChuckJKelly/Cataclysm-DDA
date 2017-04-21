@@ -2935,20 +2935,6 @@ int item::get_encumber() const
 
     const int thickness = get_thickness();
     const int coverage = get_coverage();
-    if( item_tags.count("wooled") ) {
-        encumber += 1 + 3 * coverage / 100;
-    }
-    if( item_tags.count("furred") ){
-        encumber += 1 + 4 * coverage / 100;
-    }
-
-    if( item_tags.count("leather_padded") ) {
-        encumber += thickness * coverage / 100 + 5;
-    }
-    if( item_tags.count("kevlar_padded") ) {
-        encumber += thickness * coverage / 100 + 5;
-    }
-
     return encumber;
 }
 

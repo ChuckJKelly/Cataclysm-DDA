@@ -1326,6 +1326,7 @@ void Character::item_encumb( std::array<encumbrance_data, num_bp> &vals, const i
         elem.layer_penalty = std::max( 0, elem.layer_penalty );
         // Add armor and layering penalties for the final values
         elem.encumbrance += elem.armor_encumbrance + elem.layer_penalty;
+		elem.encumbrance = std::max(0, elem.encumbrance - get_str());
     }
 }
 

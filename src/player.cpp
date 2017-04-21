@@ -9198,7 +9198,16 @@ void player::do_read( item *book )
 
     for( auto &elem : learners ) {
         player *learner = elem.first;
-
+		if (learner->is_player())
+		{
+			for (auto& recipewdes : reading->recipes) {
+				if (recipewdes.skill_level <= learner->get_skill_level(skill) && !knows_recipe(recipewdes.recipe)) {
+					learn_recipe(recipewdes.recipe);
+					add_msg(m_good, _("You memorized the recipe for %s!"),
+						recipewdes.name.c_str());
+				}
+			}
+		}
         if( reading->fun != 0 ) {
             int fun_bonus = 0;
             const int chapters = book->get_chapters();
