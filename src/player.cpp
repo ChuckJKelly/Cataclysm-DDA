@@ -10882,11 +10882,13 @@ int player::get_hp_max( hp_part bp ) const
 
 int player::get_stamina_max() const
 {
+    int locstamina = 600;
+    locstamina += get_str() * 50;
     if (has_trait("BADCARDIO"))
-        return 750;
+        locstamina -= 250;
     if (has_trait("GOODCARDIO"))
-        return 1250;
-    return 1000;
+        locstamina += 250;
+    return locstamina;
 }
 
 void player::burn_move_stamina( int moves )
